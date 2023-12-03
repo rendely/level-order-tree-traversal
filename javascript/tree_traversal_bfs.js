@@ -7,7 +7,22 @@ class Node {
 }
 
 function levelOrderTraversal(root) {
-  // type your code here
+
+  if (!root) return [];
+
+  const traversal = [];
+  const nextNodes = [root];
+
+  while (nextNodes.length > traversal.length){
+    const thisNode = nextNodes[traversal.length];
+    traversal.push(thisNode.value);
+    if (thisNode.left) nextNodes.push(thisNode.left);
+    if (thisNode.right) nextNodes.push(thisNode.right);
+
+  }
+
+  return traversal;
+
 }
 
 if (require.main === module) {
@@ -31,3 +46,7 @@ module.exports = {
 
 // Please add your pseudocode to this file
 // And a written explanation of your solution
+// If the root is empty return the value
+// If the root has any children, add those to the start of the list
+// Go through the children's children next adding them to the list
+// Keep track of already visited nodes and need to visit nodes
